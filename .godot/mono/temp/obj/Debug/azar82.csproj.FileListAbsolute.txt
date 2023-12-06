@@ -1,0 +1,17 @@
+C:\Godot\azar82\.godot\mono\temp\bin\Debug\azar82.deps.json
+C:\Godot\azar82\.godot\mono\temp\bin\Debug\azar82.runtimeconfig.json
+C:\Godot\azar82\.godot\mono\temp\bin\Debug\azar82.dll
+C:\Godot\azar82\.godot\mono\temp\bin\Debug\azar82.pdb
+C:\Godot\azar82\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Godot\azar82\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.csproj.AssemblyReference.cache
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.GeneratedMSBuildEditorConfig.editorconfig
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.AssemblyInfoInputs.cache
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.AssemblyInfo.cs
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.csproj.CoreCompileInputs.cache
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.csproj.CopyComplete
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.dll
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\refint\azar82.dll
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.pdb
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\azar82.genruntimeconfig.cache
+C:\Godot\azar82\.godot\mono\temp\obj\Debug\ref\azar82.dll

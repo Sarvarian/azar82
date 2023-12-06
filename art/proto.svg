@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1280"
+   height="720"
+   viewBox="0 0 338.66665 190.5"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.1 (91b66b0783, 2023-11-16)"
+   sodipodi:docname="proto.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.4681257"
+     inkscape:cx="663.7715"
+     inkscape:cy="420.94488"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#d45500;stroke:#ffe6d5;stroke-width:0.264583;stroke-opacity:0.5"
+       id="path1"
+       cx="62.355583"
+       cy="78.755463"
+       r="40.008495" />
+    <circle
+       style="fill:#28170b;stroke:#ffe6d5;stroke-width:0.264583;stroke-opacity:0.5"
+       id="path2"
+       cx="292.04401"
+       cy="76.502731"
+       r="37.755764" />
+    <ellipse
+       style="fill:#803300;stroke:#ffe6d5;stroke-width:0.183159;stroke-opacity:0.5"
+       id="path3"
+       cx="62.355583"
+       cy="109.03217"
+       rx="36.264618"
+       ry="17.161465" />
+    <ellipse
+       style="fill:#483737;stroke:#ffe6d5;stroke-width:0.183159;stroke-opacity:0.5"
+       id="ellipse3"
+       cx="292.04401"
+       cy="102.72453"
+       rx="36.264618"
+       ry="17.161465" />
+  </g>
+</svg>

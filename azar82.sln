@@ -1,0 +1,27 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azar82", "azar82.csproj", "{BBA270D0-585E-4ADB-B9F3-D401EE6C9262}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azar82test", "azar82test\azar82test.csproj", "{B58A2B45-B4AE-4A98-ADEB-1DA5CB15BBBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBA270D0-585E-4ADB-B9F3-D401EE6C9262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA270D0-585E-4ADB-B9F3-D401EE6C9262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA270D0-585E-4ADB-B9F3-D401EE6C9262}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{BBA270D0-585E-4ADB-B9F3-D401EE6C9262}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{BBA270D0-585E-4ADB-B9F3-D401EE6C9262}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{BBA270D0-585E-4ADB-B9F3-D401EE6C9262}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{B58A2B45-B4AE-4A98-ADEB-1DA5CB15BBBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58A2B45-B4AE-4A98-ADEB-1DA5CB15BBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B58A2B45-B4AE-4A98-ADEB-1DA5CB15BBBC}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58A2B45-B4AE-4A98-ADEB-1DA5CB15BBBC}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+		{B58A2B45-B4AE-4A98-ADEB-1DA5CB15BBBC}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58A2B45-B4AE-4A98-ADEB-1DA5CB15BBBC}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
