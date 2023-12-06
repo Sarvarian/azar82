@@ -1,7 +1,7 @@
 
 # Story Outline of Azar82 Game
 
-I use "Hero" as a placeholder for
+I use "hero" as a placeholder for
 main character name.
 
 _ **B A B R**
@@ -11,7 +11,7 @@ _ **B A B R**
   - [X] _True_: Hero: "I am a prince and these people are subjects of my kingdom."
 - [X] _Hook_: Hero struggling to survive in a wild environment like jungle and cave.
 - [X] _Inciting Incident_: Running away from guards into the woods.
-- [X] _Desire line_: Find home.
+- [X] _Desire line_: Find home and his identity.
 - [X] _Pinch 1_: Finding city and people who imprisoned him.
 - [X] _Opponent_: People of the city that deceive him.
 - [X] _Midpoint_: Finding a place in city to stay and plan to liberate city.
