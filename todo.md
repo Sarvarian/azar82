@@ -1,5 +1,10 @@
 
 # Azar82 Project Todo List
 
-- [ ] Make it first person view and second person narrative.
 - [ ] ...
+
+# Ideas
+
+- Make it first person view and second person narrative.
+- In jungle hero can find powerful relics of the past.
+  In city hero can renewal them.
