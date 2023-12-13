@@ -6,7 +6,8 @@
   "spellright.documentTypes": [
     "markdown",
     "latex",
-    "plaintext"
+    "plaintext",
+    "xml"
   ],
   "cSpell.words": [
     "Azar",

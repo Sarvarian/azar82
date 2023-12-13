@@ -38,6 +38,15 @@ of my kingdom and I shall to rule them.
 Hero is running,
 running from something,
 someone, two men with armor,
-guards are after hero.
+guards are after him.
 
+### The Pit
 
+Hero find himself in a pit.
+It is a deep pit in a jungle.
+Hero can't climb up the pit.
+He stuck in there.
+
+### The Hole
+
+-- Inciting Incident
