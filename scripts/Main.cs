@@ -7,6 +7,6 @@ public partial class Main : Node
     public override void _Ready()
     {
         base._Ready();
-        GD.Print("Hello, world!");
+        GD.Print("Hello, world! [Godot 4.2.1]");
     }
 }
