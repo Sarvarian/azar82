@@ -12,7 +12,7 @@ data_*/
 
 # I added these:
 
-.godot/
-.idea/
-.vs/
-.vscode/
+.godot/*
+.idea/*
+.vs/*
+.vscode/*
