@@ -1,11 +1,9 @@
-﻿namespace azar82.scripts_godot_agents;
+﻿using Godot;
 
-internal sealed class Main
+namespace azar82.scripts_godot_agents;
+
+internal sealed class Main(Godot.Node mainNode, Godot.Viewport topViewport)
 {
-    public Main()
-    {
-    }
-
     public void Start()
     {
     }
