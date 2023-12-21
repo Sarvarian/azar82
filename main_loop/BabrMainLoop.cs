@@ -5,7 +5,7 @@ namespace azar82.main_loop;
 
 public sealed partial class BabrMainLoop : MainLoop
 {
-    private Main main_ = new();
+    private readonly Main main_ = new();
 
     public override void _Initialize()
     {
