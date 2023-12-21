@@ -11,15 +11,18 @@ config_version=5
 [application]
 
 config/name="azar82"
-run/main_scene="res://main.tscn"
+run/main_scene="res://main_scene/main_scene.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
+run/stretch/mode="disabled"
 
 [display]
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-window/stretch/mode="viewport"
 window/handheld/orientation=4
 
 [dotnet]

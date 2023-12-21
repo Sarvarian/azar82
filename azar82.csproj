@@ -9,4 +9,7 @@
     <Compile Remove="azar82test\**" />
     <EmbeddedResource Remove="azar82test\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="scripts_aban\" />
+  </ItemGroup>
 </Project>
