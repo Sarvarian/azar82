@@ -6,6 +6,11 @@ internal sealed class Main(Godot.Node mainNode, Godot.Viewport topViewport)
     {
     }
 
+    public void Input(Godot.InputEvent inputEvent)
+    {
+        
+    }
+    
     public void Process(double delta)
     {
     }
