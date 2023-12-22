@@ -13,4 +13,8 @@
   <ItemGroup>
     <Folder Include="aban\" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Flecs.NET.Debug" Version="3.2.10" Condition="'$(Configuration)' == 'Debug'" />
+    <PackageReference Include="Flecs.NET.Release" Version="3.2.10" Condition="'$(Configuration)' == 'Release'" />
+  </ItemGroup>
 </Project>
