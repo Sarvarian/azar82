@@ -1,4 +1,4 @@
-﻿namespace azar82.scripts_godot_agents;
+﻿namespace azar82.agents;
 
 internal static class ExitRequest
 {

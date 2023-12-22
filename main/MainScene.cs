@@ -1,15 +1,15 @@
 using Godot;
 
-namespace azar82.main_scene;
+namespace azar82.main;
 
 public sealed partial class MainScene : Node
 {
-    private scripts_godot_agents.Main? main_;
+    private agents.Main? main_;
     
     public override void _Ready()
     {
         base._Ready();
-        main_ = new scripts_godot_agents.Main(this, GetViewport());
+        main_ = new agents.Main(this, GetViewport());
         main_.Start();
     }
 
