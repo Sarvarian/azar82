@@ -1,6 +1,6 @@
 using Godot;
 
-namespace azar82.main;
+namespace azar82.main_scene;
 
 public sealed partial class MainScene : Node
 {
