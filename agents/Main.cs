@@ -9,6 +9,7 @@ internal sealed class Main(Godot.Node mainNode, Godot.Viewport topViewport)
     public void Input(Godot.InputEvent inputEvent)
     {
         
+        topViewport.SetInputAsHandled();
     }
     
     public void Process(double delta)
