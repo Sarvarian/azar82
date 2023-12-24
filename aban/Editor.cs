@@ -1,10 +1,18 @@
-namespace azar82.aban.editor;
+namespace azar82.aban;
 
 public class Editor
 {
-	public Editor(IMain main)
+	public Editor(azar82.main.Main main)
 	{
-		
+		menuSystem_ = new EditorMenuBarSystem(this);
+
+		/*
+		 * Get Gui Iterator.
+		 * Get Top Viewport Visual Object.
+		 * Add Menubar Visual Object.
+		 * Add Page-bar Visual Object.
+		 * Add Workspace Visual Object.
+		 */
 	}
 	
 	public void AddEditorMenu()
@@ -47,7 +55,7 @@ public class Editor
 	 *     Workspace
 	 *     List<Panel>
 	 */
-	private EditorObject menuSystem_ = new();
+	private EditorMenuBarSystem menuSystem_;
 	private EditorObject pageSystem_ = new();
 	/*
 	 * EditorObjects

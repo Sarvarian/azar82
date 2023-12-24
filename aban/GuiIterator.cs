@@ -1,32 +1,36 @@
-using azar82.aban.vo;
+using System;
 
 namespace azar82.aban;
 
-internal sealed class GuiIterator : ProcessIterator
+public sealed class GuiIterator : ProcessIterator
 {
+	public event Action? OnStart;
+	public event Action<double>? OnProcess;
+	public event Action? OnEnd;
+	
 	// private Query queryTopViewportChildren_ =
 	// 	world.Query(filter: world.FilterBuilder()
 	// 		.Term(Ecs.ChildOf, topViewport)
 	// 	);
 
-	public GuiIterator(IMain main) : base(main)
+	public GuiIterator(azar82.main.Main main) : base(main)
 	{
 		main_ = main;
 		main_.OnStart += Start;
 	}
 
-	private readonly IMain main_;
+	private readonly azar82.main.Main main_;
 	private TopViewport? topViewport_ = null;
 
 	private void Start()
 	{
-		topViewport_ = new TopViewport(main_.GetTopViewport());
-		topViewport_.Start();
+		topViewport_ = new TopViewport(this, main_.GetTopViewport());
+		OnStart?.Invoke();
 	}
 
 	private void End()
 	{
-		topViewport_?.End();
+		OnEnd?.Invoke();
 	}
 	
 	protected override ulong GetMaxFps() => 30;
@@ -49,9 +53,9 @@ internal sealed class GuiIterator : ProcessIterator
 		// Godot Render Server
 		// SubViewports and TextureRects
 		// 
-		
-		topViewport_?.Process(delta);
-		
+
+		OnProcess?.Invoke(delta);
+
 	}
 
 	private void ChildrenOfTopViewport()

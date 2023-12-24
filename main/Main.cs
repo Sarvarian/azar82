@@ -1,11 +1,10 @@
 using System;
 using azar82.aban;
-using azar82.aban.editor;
 using Godot;
 
 namespace azar82.main;
 
-public sealed partial class Main : Node, IMain
+public sealed partial class Main : Node
 {
     public event Action? OnStart;
     public event Action<double>? OnProcess;

@@ -1,4 +1,4 @@
-namespace azar82.aban.editor;
+namespace azar82.aban;
 
 public class EditorObject
 {

@@ -4,7 +4,7 @@ namespace azar82.aban;
 
 public abstract class ProcessIterator
 {
-	public ProcessIterator(IMain main)
+	public ProcessIterator(azar82.main.Main main)
 	{
 		main.OnProcess += ProcessDispatch;
 	}
