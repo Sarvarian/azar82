@@ -1,10 +1,15 @@
+using azar82.aban.vo;
+using Godot;
+
 namespace azar82.aban;
 
 public class Editor
 {
 	public Editor(azar82.main.Main main)
 	{
+		main_ = main;
 		menuSystem_ = new EditorMenuBarSystem(this);
+		main_.OnPreStart += PreStart;
 
 		/*
 		 * Get Gui Iterator.
@@ -22,7 +27,15 @@ public class Editor
 	public void AddShortcut()
 	{
 	}
-	
+
+	private void PreStart()
+	{
+		var topViewport = new TopViewport(
+			main_.GetGuiIterator(),
+			main_.GetTopViewport(),
+			new VisObjManuBar(menuSystem_)
+			);
+	}
 	
 	/*
 	 * Main System
@@ -55,6 +68,7 @@ public class Editor
 	 *     Workspace
 	 *     List<Panel>
 	 */
+	private azar82.main.Main main_;
 	private EditorMenuBarSystem menuSystem_;
 	private EditorObject pageSystem_ = new();
 	/*
@@ -67,6 +81,7 @@ public class Editor
 	 *  
 	 */
 	private EditorObject workspace_ = new();
+
 	
 	
 }

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwtrdw1x1pgs1"]
+
+[ext_resource type="Script" path="res://tests/test1.gd" id="1_omhoj"]
+
+[node name="Test1" type="Node"]
+script = ExtResource("1_omhoj")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hello world"

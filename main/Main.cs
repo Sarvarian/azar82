@@ -6,22 +6,39 @@ namespace azar82.main;
 
 public sealed partial class Main : Node
 {
+    public event Action? OnPreStart;
     public event Action? OnStart;
+    public event Action? OnPostStart;
     public event Action<double>? OnProcess;
     public event Action<double>? OnPhysicsProcess;
     public event Action<InputEvent>? OnInputEvent;
+    public event Action? OnPreEnd;
     public event Action? OnEnd;
+    public event Action? OnPostEnd;
+
     public Viewport GetTopViewport()
     {
         return GetViewport();
     }
 
+    public GuiIterator GetGuiIterator()
+    {
+        return guiIterator_;
+    }
+
+    public Editor GetEditor()
+    {
+        return editor_;
+    }
+
     private Viewport? topViewport_ = null;
+    private readonly GuiIterator guiIterator_;
+    private readonly Editor editor_;
 
     public Main()
     {
-        var guiIterator = new GuiIterator(this);
-        var editor = new Editor(this);
+        guiIterator_ = new GuiIterator(this);
+        editor_ = new Editor(this);
     }
     
     public override void _Ready()
@@ -32,7 +49,9 @@ public sealed partial class Main : Node
 
     private void Start()
     {
+        OnPreStart?.Invoke();
         OnStart?.Invoke();
+        OnPostStart?.Invoke();
     }
 
     public override void _Input(InputEvent @event)
@@ -62,7 +81,9 @@ public sealed partial class Main : Node
     protected override void Dispose(bool disposing)
     {
         base.Dispose(disposing);
+        OnPreEnd?.Invoke();
         OnEnd?.Invoke();
+        OnPostEnd?.Invoke();
     }
     
 }

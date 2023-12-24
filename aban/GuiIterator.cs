@@ -4,9 +4,13 @@ namespace azar82.aban;
 
 public sealed class GuiIterator : ProcessIterator
 {
+	public event Action? OnPreStart;
 	public event Action? OnStart;
+	public event Action? OnPostStart;
 	public event Action<double>? OnProcess;
+	public event Action? OnPreEnd;
 	public event Action? OnEnd;
+	public event Action? OnPostEnd;
 	
 	// private Query queryTopViewportChildren_ =
 	// 	world.Query(filter: world.FilterBuilder()
@@ -15,22 +19,43 @@ public sealed class GuiIterator : ProcessIterator
 
 	public GuiIterator(azar82.main.Main main) : base(main)
 	{
-		main_ = main;
-		main_.OnStart += Start;
+		main = main;
+		main.OnPreStart += PreStart;
+		main.OnStart += Start;
+		main.OnPostStart += PostStart;
+		main.OnPreEnd += PreEnd;
+		main.OnEnd += End;
+		main.OnPostEnd += PostEnd;
 	}
 
-	private readonly azar82.main.Main main_;
-	private TopViewport? topViewport_ = null;
+	private void PreStart()
+	{
+		OnPreStart?.Invoke();
+	}
 
 	private void Start()
 	{
-		topViewport_ = new TopViewport(this, main_.GetTopViewport());
 		OnStart?.Invoke();
 	}
 
+	private void PostStart()
+	{
+		OnPostStart?.Invoke();
+	}
+
+	private void PreEnd()
+	{
+		OnPreEnd?.Invoke();
+	}
+	
 	private void End()
 	{
 		OnEnd?.Invoke();
+	}
+	
+	private void PostEnd()
+	{
+		OnPostEnd?.Invoke();
 	}
 	
 	protected override ulong GetMaxFps() => 30;
