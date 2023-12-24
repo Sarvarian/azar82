@@ -5,49 +5,31 @@ namespace azar82.aban.vo;
 
 public class Surface(Node parent) : VisualObject
 {
+	protected readonly SubViewport View = new();
+	private readonly TextureRect texture_ = new();
+	
 	protected override void OnStart()
 	{
 		base.OnStart();
-		
-		texture_.Texture = viewport_.GetTexture();
-		parent.AddChild(viewport_);
+				
+		texture_.Texture = View.GetTexture();
+		parent.AddChild(View);
 		parent.AddChild(texture_);
 		SetNewSize(parent.GetViewport().GetVisibleRect().Size.ToInt());
-		
-		var welcomeScene = GD.Load<PackedScene>("res://panels/welcome/welcome.tscn");
-		var welcome = welcomeScene.Instantiate();
-		viewport_.AddChild(welcome);
-        
-		// var rs = RenderingServer.Singleton;
-		// ci_ = rs.CanvasItemCreate();
-		//
-		// c_ = rs.CanvasCreate();
-		
-		// var vp2 = new SubViewport();
-		// AddChild(vp2);
-		
-		// var mainMenuScene = GD.Load<PackedScene>("res://panels/mainmenu/mainmenu.tscn");
-		// var mainMenu = mainMenuScene.Instantiate();
-		// vp2.AddChild(mainMenu);
-	}
-
-	protected override void OnProcess(double delta)
-	{
-		base.OnProcess(delta);
 	}
 
 	protected override void OnEnd()
 	{
 		base.OnEnd();
-		viewport_.SafeFree();
+		View.SafeFree();
 		texture_.SafeFree();
 	}
-
+    
 	public override void SetNewSize(Vector2I newSize)
 	{
 		base.SetNewSize(newSize);
 	
-		viewport_.Size = newSize;
+		View.Size = newSize;
 		texture_.Size = newSize;
 		SizeUpdated();
 	}
@@ -70,7 +52,5 @@ public class Surface(Node parent) : VisualObject
 	{
 		base.PositionUpdated();
 	}
-
-	private SubViewport viewport_ = new();
-	private TextureRect texture_ = new();
+	
 }
