@@ -1,17 +1,29 @@
+using System;
 using azar82.aban;
-using azar82.aban.vo;
+using azar82.aban.editor;
 using Godot;
 
 namespace azar82.main;
 
-public sealed partial class Main : Node
+public sealed partial class Main : Node, IMain
 {
-    private readonly GuiIterator guiIterator_ = new();
+    public event Action? OnStart;
+    public event Action<double>? OnProcess;
+    public event Action<double>? OnPhysicsProcess;
+    public event Action<InputEvent>? OnInputEvent;
+    public event Action? OnEnd;
+    public Viewport GetTopViewport()
+    {
+        return GetViewport();
+    }
+
     private Viewport? topViewport_ = null;
 
-    private Rid ci_;
-    private SubViewport? vp_ = null;
-    private Rid c_;
+    public Main()
+    {
+        var guiIterator = new GuiIterator(this);
+        var editor = new Editor(this);
+    }
     
     public override void _Ready()
     {
@@ -19,33 +31,39 @@ public sealed partial class Main : Node
         topViewport_ = GetViewport();
     }
 
-    public void Start()
+    private void Start()
     {
-        guiIterator_.Start(new TopViewport(GetViewport()));
+        OnStart?.Invoke();
     }
 
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
-
+        OnInputEvent?.Invoke(@event);
         topViewport_!.SetInputAsHandled();
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
-        guiIterator_.Process();
+        OnProcess?.Invoke(delta);
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
+        OnPhysicsProcess?.Invoke(delta);
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
     }
 
     protected override void Dispose(bool disposing)
     {
         base.Dispose(disposing);
-        guiIterator_.End();
+        OnEnd?.Invoke();
     }
     
 }

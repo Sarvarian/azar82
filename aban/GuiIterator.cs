@@ -2,22 +2,29 @@ using azar82.aban.vo;
 
 namespace azar82.aban;
 
-internal sealed class GuiIterator() : ProcessIterator
+internal sealed class GuiIterator : ProcessIterator
 {
 	// private Query queryTopViewportChildren_ =
 	// 	world.Query(filter: world.FilterBuilder()
 	// 		.Term(Ecs.ChildOf, topViewport)
 	// 	);
 
+	public GuiIterator(IMain main) : base(main)
+	{
+		main_ = main;
+		main_.OnStart += Start;
+	}
+
+	private readonly IMain main_;
 	private TopViewport? topViewport_ = null;
 
-	public void Start(TopViewport topViewport)
+	private void Start()
 	{
-		topViewport_ = topViewport;
+		topViewport_ = new TopViewport(main_.GetTopViewport());
 		topViewport_.Start();
 	}
 
-	public void End()
+	private void End()
 	{
 		topViewport_?.End();
 	}

@@ -4,13 +4,23 @@ namespace azar82.aban;
 
 public abstract class ProcessIterator
 {
-	private ulong lastTime_ = Time.GetTicksUsec();
+	public ProcessIterator(IMain main)
+	{
+		main.OnProcess += ProcessDispatch;
+	}
 
+	private void ProcessDispatch(double delta)
+	{
+		Process();
+	}
+	
+	private ulong lastTime_ = Time.GetTicksUsec();
+	
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns>True if did run and false if skip a run.</returns>
-	public bool Process()
+	private bool Process()
 	{
 		const ulong uSecInSec = 1_000_000;
 		var delay = uSecInSec / GetMaxFps();
