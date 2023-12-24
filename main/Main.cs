@@ -1,29 +1,27 @@
+using azar82.aban;
+using azar82.aban.vo;
 using Godot;
 
 namespace azar82.main;
 
 public sealed partial class Main : Node
 {
+    private readonly GuiIterator guiIterator_ = new();
+    private Viewport? topViewport_ = null;
+
+    private Rid ci_;
+    private SubViewport? vp_ = null;
+    private Rid c_;
+    
     public override void _Ready()
     {
         base._Ready();
         topViewport_ = GetViewport();
+    }
 
-        var vp = new SubViewport();
-        AddChild(vp);
-
-        var welcomeScene = GD.Load<PackedScene>("res://panels/welcome/welcome.tscn");
-        var welcome = welcomeScene.Instantiate();
-        vp.AddChild(welcome);
-
-        var tvpSize = topViewport_.GetVisibleRect().Size;
-        vp.Size = new Vector2I((int)tvpSize.X, (int)tvpSize.Y);
-
-        var tr = new TextureRect();
-        tr.AnchorsPreset = (int)Control.LayoutPreset.FullRect;
-        AddChild(tr);
-
-        tr.Texture = vp.GetTexture();
+    public void Start()
+    {
+        guiIterator_.Start(new TopViewport(GetViewport()));
     }
 
     public override void _Input(InputEvent @event)
@@ -36,6 +34,7 @@ public sealed partial class Main : Node
     public override void _Process(double delta)
     {
         base._Process(delta);
+        guiIterator_.Process();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -46,8 +45,7 @@ public sealed partial class Main : Node
     protected override void Dispose(bool disposing)
     {
         base.Dispose(disposing);
+        guiIterator_.End();
     }
-
-    private Viewport? topViewport_ = null;
-
+    
 }
