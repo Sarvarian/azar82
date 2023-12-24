@@ -64,21 +64,4 @@ public abstract class VisualObject
 	{
 	}
 
-	public virtual void SetNewSize(Vector2I newSize)
-	{
-	}
-
-	public virtual void SizeUpdated()
-	{
-	}
-
-	public virtual void SetNewPosition(Vector2I newPosition)
-	{
-	}
-
-	public virtual void PositionUpdated()
-	{
-	}
-
-
 }

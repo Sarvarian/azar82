@@ -24,7 +24,7 @@ public class TopViewport(Viewport topViewport) : VisualObject
 	}
 
 	private bool doUpdateSize_ = false;
-	private readonly VisualObject surface01_ = new Welcome(topViewport);
+	private readonly Surface surface01_ = new Welcome(topViewport);
 	
 	private void OnTopViewportSizeChanged()
 	{

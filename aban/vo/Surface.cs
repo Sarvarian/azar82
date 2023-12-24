@@ -25,32 +25,51 @@ public class Surface(Node parent) : VisualObject
 		texture_.SafeFree();
 	}
     
-	public override void SetNewSize(Vector2I newSize)
+	public void SetNewSize(Vector2I newSize)
 	{
-		base.SetNewSize(newSize);
-	
 		View.Size = newSize;
 		texture_.Size = newSize;
+		
+		OnSetNewSize(newSize);
+		
 		SizeUpdated();
 	}
 
-	public override void SizeUpdated()
+	protected virtual void OnSetNewSize(Vector2I newSize)
 	{
-		base.SizeUpdated();
+		
+	}
+	
+	public void SizeUpdated()
+	{
 		// texture_.AnchorsPreset = (int)Control.LayoutPreset.FullRect;
+		OnSizeUpdated();
 	}
 
-	public override void SetNewPosition(Vector2I newPosition)
+	protected virtual void OnSizeUpdated()
 	{
-		base.SetNewPosition(newPosition);
-	
+	} 
+
+	public void SetNewPosition(Vector2I newPosition)
+	{
 		texture_.Position = newPosition;
+
+		OnSetNewPosition(newPosition);
+		
 		PositionUpdated();
 	}
 
-	public override void PositionUpdated()
+	protected virtual void OnSetNewPosition(Vector2I newPosition)
 	{
-		base.PositionUpdated();
+	}
+
+	public void PositionUpdated()
+	{
+		OnPositionUpdated();
+	}
+
+	protected virtual void OnPositionUpdated()
+	{
 	}
 	
 }
