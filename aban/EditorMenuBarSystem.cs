@@ -6,5 +6,7 @@ public class EditorMenuBarSystem
 	{
 		
 	}
-	
+
+	public string[] Menus = ["File", "Edit", "Page", "Config", "Help"];
+
 }

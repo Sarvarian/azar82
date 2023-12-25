@@ -37,7 +37,7 @@ public sealed partial class Main : Node
 
     public Main()
     {
-        guiIterator_ = new GuiIterator(this);
+        guiIterator_ = new GuiIterator(this, this);
         editor_ = new Editor(this);
     }
     
@@ -73,6 +73,11 @@ public sealed partial class Main : Node
         OnPhysicsProcess?.Invoke(delta);
     }
 
+    public override void _Notification(int what)
+    {
+        base._Notification(what);
+    }
+
     public override void _ExitTree()
     {
         base._ExitTree();
@@ -81,9 +86,22 @@ public sealed partial class Main : Node
     protected override void Dispose(bool disposing)
     {
         base.Dispose(disposing);
-        OnPreEnd?.Invoke();
-        OnEnd?.Invoke();
-        OnPostEnd?.Invoke();
+        Exit();
     }
+    
+    private bool isExitHandled_ = false;
+    
+    private void Exit()
+    {
+        if (isExitHandled_ == false)
+        {
+            OnPreEnd?.Invoke();
+            OnEnd?.Invoke();
+            OnPostEnd?.Invoke();
+            // GD.Print("Exit Handled");
+            isExitHandled_ = true;
+        }
+    }
+    
     
 }

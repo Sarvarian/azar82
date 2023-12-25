@@ -11,15 +11,22 @@ public sealed class GuiIterator : ProcessIterator
 	public event Action? OnPreEnd;
 	public event Action? OnEnd;
 	public event Action? OnPostEnd;
+
+	public Godot.Node GetRootNode()
+	{
+		return root_;
+	}
 	
 	// private Query queryTopViewportChildren_ =
 	// 	world.Query(filter: world.FilterBuilder()
 	// 		.Term(Ecs.ChildOf, topViewport)
 	// 	);
 
-	public GuiIterator(azar82.main.Main main) : base(main)
+	private readonly Godot.Node root_;
+
+	public GuiIterator(azar82.main.Main main, Godot.Node root) : base(main)
 	{
-		main = main;
+		root_ = root;
 		main.OnPreStart += PreStart;
 		main.OnStart += Start;
 		main.OnPostStart += PostStart;

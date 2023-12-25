@@ -30,10 +30,11 @@ public class Editor
 
 	private void PreStart()
 	{
+		var guiIterator = main_.GetGuiIterator();
 		var topViewport = new TopViewport(
-			main_.GetGuiIterator(),
+			guiIterator,
 			main_.GetTopViewport(),
-			new VisObjManuBar(menuSystem_)
+			new VisObjManuBar(menuSystem_, guiIterator)
 			);
 	}
 	
