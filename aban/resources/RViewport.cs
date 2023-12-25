@@ -25,6 +25,23 @@ public readonly struct RViewport : IDisposable
 		Free();
 	}
 
+	public readonly RCanvas CreateCanvas()
+	{
+		var canvas = new RCanvas();
+		AttachCanvas(canvas);
+		return canvas;
+	}
+	
+	public readonly void AttachCanvas(RCanvas canvas)
+	{
+		canvas.AttachToViewport(viewport_);
+	}
+
+	public readonly void AttachCanvas(Rid canvas)
+	{
+		Server.ViewportAttachCanvas(viewport_, canvas);
+	}
+
 	public readonly void SetFor2D()
 	{
 		Server.ViewportSetDisable3D(viewport_, true);
