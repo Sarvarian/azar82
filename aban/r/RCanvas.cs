@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace azar82.aban.resources;
+namespace azar82.aban.r;
 
 public readonly struct RCanvas() : IDisposable
 {
