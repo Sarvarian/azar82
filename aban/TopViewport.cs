@@ -21,6 +21,7 @@ public class TopViewport
 		canvas_ = new RCanvas();
 		item_ = canvas_.CreateItem();
 		canvas_.AttachToViewport(topViewport_.GetViewportRid());
+		UpdateMenuBar();
 	}
 
 	private void Start()
@@ -43,15 +44,10 @@ public class TopViewport
 	private void Process(double delta)
 	{
 		// surface01_.Process(delta);
-		var newSize = topViewport_.GetVisibleRect().Size;
-		var rect = menuBar_.Update(newSize);
-		var texture = menuBar_.GetTexture();
-		item_.BlitTexture(texture, rect);
-		item_.SetSize(rect);
-		
 		if (doUpdateSize_)
 		{
 			// surface01_.SetNewSize(newSize);
+			UpdateMenuBar();
 			doUpdateSize_ = false;
 		}
 	}
@@ -59,6 +55,15 @@ public class TopViewport
 	private void OnTopViewportSizeChanged()
 	{
 		doUpdateSize_ = true;
+	}
+
+	private void UpdateMenuBar()
+	{
+		var newSize = topViewport_.GetVisibleRect().Size;
+		var rect = menuBar_.Update(newSize);
+		var texture = menuBar_.GetTexture();
+		item_.BlitTexture(texture, rect);
+		item_.SetSize(rect);
 	}
 	
 }
