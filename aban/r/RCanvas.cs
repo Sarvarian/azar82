@@ -28,6 +28,20 @@ public readonly struct RCanvas() : IDisposable
 		Server.ViewportAttachCanvas(viewport, canvas_);
 	}
 
+	public readonly RItemView CreateItemView(RViewport viewport)
+	{
+		var item = new RItemView(viewport);
+		AttachItem(item.Item);
+		return item;
+	}
+	
+	public readonly RItemView CreateItemView()
+	{
+		var item = new RItemView();
+		AttachItem(item.Item);
+		return item;
+	}
+	
 	public readonly RItem CreateItem()
 	{
 		var item = new RItem();

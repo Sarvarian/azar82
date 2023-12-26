@@ -5,22 +5,21 @@ namespace azar82.aban.r;
 
 public readonly struct RViewCanvas : IDisposable
 {
-	private readonly RViewport view_;
-	private readonly RCanvas canvas_;
-	public Rid Texture => view_.Texture;
+	public readonly RViewport View;
+	public readonly RCanvas Canvas;
+	public Rid Texture => View.Texture;
 
 	public RViewCanvas()
 	{
-		view_ = new RViewport();
-		canvas_ = view_.CreateCanvas();
+		View = new RViewport();
+		Canvas = View.CreateCanvas();
 	}
 	
 	public readonly void Free()
 	{
-		canvas_.Free();
-		view_.Free();
+		Canvas.Free();
+		View.Free();
 	}
-
 
 	public void Dispose()
 	{
@@ -29,26 +28,26 @@ public readonly struct RViewCanvas : IDisposable
 
 	public void SetFor2D()
 	{
-		view_.SetFor2D();
+		View.SetFor2D();
 	}
 
 	public void SetRetained()
 	{
-		view_.SetRetained();
+		View.SetRetained();
 	}
 
 	public void AttachItem(RItem item)
 	{
-		canvas_.AttachItem(item);
+		Canvas.AttachItem(item);
 	}
 
 	public void SetSize(Vector2I size)
 	{
-		view_.SetSize(size);
+		View.SetSize(size);
 	}
 
 	public void UpdateRetained()
 	{
-		view_.UpdateRetained();
+		View.UpdateRetained();
 	}
 }

@@ -10,7 +10,7 @@ public readonly struct ManuBar
 	private readonly List<RString> texts_ = [];
 	private readonly RViewCanvas view_;
 
-	private readonly Vector2 size_ = Vector2.Zero;
+	public readonly Vector2 Size = Vector2.Zero;
 	
 	public ManuBar(EditorMenuBarSystem menuSystem)
 	{
@@ -18,7 +18,7 @@ public readonly struct ManuBar
 		view_.SetFor2D();
 		view_.SetRetained();
 		
-		size_.X = 0.0f;
+		Size.X = 0.0f;
 		foreach (var str in menuSystem.Menus)
 		{
 			var text = new RString(str);
@@ -26,13 +26,13 @@ public readonly struct ManuBar
 			view_.AttachItem(text.Item);
 			
 			var trans = Transform2D.Identity;
-			trans.Origin.X = size_.X;
+			trans.Origin.X = Size.X;
 			text.Item.SetTransform(trans);
 			
-			size_.X += text.Size.X + 10.0f;
-			size_.Y = size_.Y < text.Size.Y ? text.Size.Y : size_.Y;
+			Size.X += text.Size.X + 10.0f;
+			Size.Y = Size.Y < text.Size.Y ? text.Size.Y : Size.Y;
 		}
-		view_.SetSize(size_.ToInt());
+		view_.SetSize(Size.ToInt());
 	}
 
 	public void End()
@@ -44,25 +44,9 @@ public readonly struct ManuBar
 		view_.Free();
 	}
 
-	public Rect2 Update(Vector2 screenSize)
+	public readonly RViewport GetView()
 	{
-		// size_ = new Vector2(screenSize.X, size_.Y);
-		// view_.SetSize(size_.ToInt());
-		view_.UpdateRetained();
-		return new Rect2(Vector2I.Zero, size_);
+		return view_.View;
 	}
-
-	public Rid GetTexture()
-	{
-		return view_.Texture;
-	}
-	
-	// UpdateSize and GetNewSize
-	
-	// ReDraw
-	
-	// Texture
-
-
 
 }

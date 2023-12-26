@@ -5,10 +5,12 @@ namespace azar82.aban;
 
 public class TopViewport
 {
-	private readonly ManuBar menuBar_;
 	// private readonly Surface surface01_;
 	private bool doUpdateSize_ = false;
 	private readonly Viewport topViewport_;
+	private readonly RCanvas canvas_;
+	private readonly ManuBar menuBar_;
+	private readonly RItemView menuBarItem_; 
 
 	public TopViewport(GuiIterator iterator, Viewport topViewport, ManuBar menuBar)
 	{
@@ -19,8 +21,8 @@ public class TopViewport
 		iterator.OnProcess += Process;
 		iterator.OnEnd += End;
 		canvas_ = new RCanvas();
-		item_ = canvas_.CreateItem();
 		canvas_.AttachToViewport(topViewport_.GetViewportRid());
+		menuBarItem_ = canvas_.CreateItemView(menuBar.GetView());
 		UpdateMenuBar();
 	}
 
@@ -30,14 +32,11 @@ public class TopViewport
 		// surface01_.Start();
 	}
 
-	private readonly RCanvas canvas_;
-	private readonly RItem item_;
-
 	private void End()
 	{
 		// surface01_.End();
 		menuBar_.End();
-		item_.Free();
+		menuBarItem_.Free();
 		canvas_.Free();
 	}
 
@@ -59,11 +58,8 @@ public class TopViewport
 
 	private void UpdateMenuBar()
 	{
-		var newSize = topViewport_.GetVisibleRect().Size;
-		var rect = menuBar_.Update(newSize);
-		var texture = menuBar_.GetTexture();
-		item_.BlitTexture(texture, rect);
-		item_.SetSize(rect);
+		var rect = new Rect2(Vector2.Zero, menuBar_.Size);
+		menuBarItem_.UpdateRetainedWithNewSize(rect);
 	}
 	
 }
