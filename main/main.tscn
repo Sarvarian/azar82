@@ -1,14 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8f85d6di3o25"]
+[gd_scene load_steps=3 format=3 uid="uid://c8f85d6di3o25"]
 
 [ext_resource type="Script" path="res://main/Main.cs" id="1_5oeg6"]
 [ext_resource type="Script" path="res://main/main_helper.gd" id="2_h0ru1"]
-[ext_resource type="Script" path="res://tests/test_text/TestText.cs" id="3_rhqho"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5oeg6")
 
 [node name="Helper" type="Node" parent="."]
 script = ExtResource("2_h0ru1")
-
-[node name="TestText" type="Node" parent="."]
-script = ExtResource("3_rhqho")
