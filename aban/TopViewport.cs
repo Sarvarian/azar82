@@ -45,7 +45,7 @@ public class TopViewport
 	private void Process(double delta)
 	{
 		// surface01_.Process(delta);
-		var newSize = topViewport_.GetVisibleRect().Size.ToInt();
+		var newSize = topViewport_.GetVisibleRect().Size;
 		var rect = menuBar_.Update(newSize);
 		var texture = menuBar_.GetTexture();
 		item_.BlitTexture(texture, rect);

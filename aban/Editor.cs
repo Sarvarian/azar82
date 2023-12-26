@@ -34,7 +34,7 @@ public class Editor
 		var topViewport = new TopViewport(
 			guiIterator,
 			main_.GetTopViewport(),
-			new VisObjManuBar(menuSystem_, guiIterator)
+			new VisObjManuBar(menuSystem_)
 			);
 	}
 	

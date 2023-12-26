@@ -7,12 +7,12 @@ public readonly struct RViewport : IDisposable
 {
 	private static readonly RenderingServerInstance Server = RenderingServer.Singleton;
 	private readonly Rid viewport_;
-	public readonly Rid Texture;
+	public readonly Rid Texture => Server.ViewportGetTexture(viewport_);
 	
 	public RViewport()
 	{
 		viewport_ = Server.ViewportCreate();
-		Texture = Server.ViewportGetTexture(viewport_);
+		// Texture = Server.ViewportGetTexture(viewport_);
 	}
 	
 	public readonly void Free()

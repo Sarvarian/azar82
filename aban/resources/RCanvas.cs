@@ -31,7 +31,7 @@ public readonly struct RCanvas() : IDisposable
 	public readonly RCanvasItem CreateItem()
 	{
 		var item = new RCanvasItem();
-		item.AttachToCanvas(canvas_);
+		AttachItem(item);
 		return item;
 	}
 	
