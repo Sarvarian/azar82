@@ -5,27 +5,25 @@ using Godot;
 
 namespace azar82.aban;
 
-public sealed class VisObjManuBar
+public sealed class ManuBar
 {
 	private readonly List<RString> texts_ = [];
-	private readonly RViewport view_;
-	private readonly RCanvas canvas_;
+	private readonly RCanvasView view_;
 
 	private Vector2 size_ = Vector2.Zero;
 	
-	public VisObjManuBar(EditorMenuBarSystem menuSystem)
+	public ManuBar(EditorMenuBarSystem menuSystem)
 	{
-		view_ = new RViewport();
+		view_ = new RCanvasView();
 		view_.SetFor2D();
 		view_.SetRetained();
-		canvas_ = view_.CreateCanvas();
 		
 		size_.X = 0.0f;
 		foreach (var str in menuSystem.Menus)
 		{
 			var text = new RString(str);
 			texts_.Add(text);
-			canvas_.AttachItem(text.Item);
+			view_.AttachItem(text.Item);
 			
 			var trans = Transform2D.Identity;
 			trans.Origin.X = size_.X;
@@ -43,7 +41,6 @@ public sealed class VisObjManuBar
 		{
 			item.Free();
 		}
-		canvas_.Free();
 		view_.Free();
 	}
 

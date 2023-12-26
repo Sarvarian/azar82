@@ -5,12 +5,12 @@ namespace azar82.aban;
 
 public class TopViewport
 {
-	private readonly VisObjManuBar menuBar_;
+	private readonly ManuBar menuBar_;
 	// private readonly Surface surface01_;
 	private bool doUpdateSize_ = false;
 	private readonly Viewport topViewport_;
 
-	public TopViewport(GuiIterator iterator, Viewport topViewport, VisObjManuBar menuBar)
+	public TopViewport(GuiIterator iterator, Viewport topViewport, ManuBar menuBar)
 	{
 		menuBar_ = menuBar;
 		topViewport_ = topViewport;
