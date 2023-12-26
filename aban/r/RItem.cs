@@ -1,10 +1,9 @@
 using System;
 using Godot;
-using Vector2 = System.Numerics.Vector2;
 
 namespace azar82.aban.r;
 
-public readonly struct RCanvasItem() : IDisposable
+public readonly struct RItem() : IDisposable
 {
 	private static readonly RenderingServerInstance Server = RenderingServer.Singleton;
 	public readonly Rid Rid = Server.CanvasItemCreate();

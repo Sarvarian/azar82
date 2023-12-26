@@ -28,14 +28,14 @@ public readonly struct RCanvas() : IDisposable
 		Server.ViewportAttachCanvas(viewport, canvas_);
 	}
 
-	public readonly RCanvasItem CreateItem()
+	public readonly RItem CreateItem()
 	{
-		var item = new RCanvasItem();
+		var item = new RItem();
 		AttachItem(item);
 		return item;
 	}
 	
-	public readonly void AttachItem(RCanvasItem item)
+	public readonly void AttachItem(RItem item)
 	{
 		item.AttachToCanvas(canvas_);
 	}

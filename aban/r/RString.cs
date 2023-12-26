@@ -6,7 +6,7 @@ namespace azar82.aban.r;
 public readonly struct RString : IDisposable
 {
 	private static readonly Font Font = ThemeDB.FallbackFont;
-	public readonly RCanvasItem Item = new();
+	public readonly RItem Item = new();
 	public readonly Vector2 Size;
 	
 	public RString(string str)

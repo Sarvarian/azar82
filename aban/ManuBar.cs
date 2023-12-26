@@ -5,16 +5,16 @@ using Godot;
 
 namespace azar82.aban;
 
-public sealed class ManuBar
+public readonly struct ManuBar
 {
 	private readonly List<RString> texts_ = [];
-	private readonly RCanvasView view_;
+	private readonly RViewCanvas view_;
 
-	private Vector2 size_ = Vector2.Zero;
+	private readonly Vector2 size_ = Vector2.Zero;
 	
 	public ManuBar(EditorMenuBarSystem menuSystem)
 	{
-		view_ = new RCanvasView();
+		view_ = new RViewCanvas();
 		view_.SetFor2D();
 		view_.SetRetained();
 		

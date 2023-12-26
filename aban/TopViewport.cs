@@ -31,7 +31,7 @@ public class TopViewport
 	}
 
 	private readonly RCanvas canvas_;
-	private readonly RCanvasItem item_;
+	private readonly RItem item_;
 
 	private void End()
 	{

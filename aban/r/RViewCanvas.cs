@@ -3,13 +3,13 @@ using Godot;
 
 namespace azar82.aban.r;
 
-public readonly struct RCanvasView : IDisposable
+public readonly struct RViewCanvas : IDisposable
 {
 	private readonly RViewport view_;
 	private readonly RCanvas canvas_;
 	public Rid Texture => view_.Texture;
 
-	public RCanvasView()
+	public RViewCanvas()
 	{
 		view_ = new RViewport();
 		canvas_ = view_.CreateCanvas();
@@ -37,9 +37,9 @@ public readonly struct RCanvasView : IDisposable
 		view_.SetRetained();
 	}
 
-	public void AttachItem(RCanvasItem canvasItem)
+	public void AttachItem(RItem item)
 	{
-		canvas_.AttachItem(canvasItem);
+		canvas_.AttachItem(item);
 	}
 
 	public void SetSize(Vector2I size)
