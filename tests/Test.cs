@@ -39,22 +39,23 @@ public partial class Test : Node
 		subCanvas_.AttachToViewport(subViewport_);
 		subItem_.AttachToCanvas(subCanvas_);
 		subViewport_.SetSize(GetViewport().GetVisibleRect().Size.ToInt());
+		// subViewport_.SetParent(GetViewport());
 	}
 
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
 		
-		// var rect = menuBar_.Update(GetViewport().GetVisibleRect().Size);
-		// var texture = menuBar_.GetTexture();
-		// item_.BlitTexture(texture, rect);
+		var rect = menuBar_.Update(GetViewport().GetVisibleRect().Size);
+		var texture = menuBar_.GetTexture();
+		item_.BlitTexture(texture, rect);
 		
 		var rs = RenderingServer.Singleton;
 		var ci = subItem_.Rid;
 		rs.CanvasItemAddLine(ci, new Vector2(5.0f, 5.0f), new Vector2(10.0f, 10.0f), Colors.Aqua);
 
-		var rect = GetViewport().GetVisibleRect();
-		item_.BlitTexture(subViewport_.Texture, rect);
-		
+		var rect2 = GetViewport().GetVisibleRect();
+		item_.BlitTexture(subViewport_.Texture, rect2);
+
 	}
 }

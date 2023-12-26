@@ -8,10 +8,12 @@ public readonly struct RViewport : IDisposable
 	private static readonly RenderingServerInstance Server = RenderingServer.Singleton;
 	private readonly Rid viewport_;
 	public readonly Rid Texture => Server.ViewportGetTexture(viewport_);
+	public readonly Rid Rid => viewport_;
 	
 	public RViewport()
 	{
 		viewport_ = Server.ViewportCreate();
+		Server.ViewportSetActive(viewport_, true);
 		// Texture = Server.ViewportGetTexture(viewport_);
 	}
 	
@@ -23,6 +25,12 @@ public readonly struct RViewport : IDisposable
 	public readonly void Dispose()
 	{
 		Free();
+	}
+
+	public readonly void SetParent(Viewport parentViewport)
+	{
+		var parentRid = parentViewport.GetViewportRid();
+		Server.ViewportSetParentViewport(viewport_, parentRid);
 	}
 
 	public readonly RCanvas CreateCanvas()
