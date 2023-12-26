@@ -52,7 +52,7 @@ public sealed class VisObjManuBar
 		view_.Free();
 	}
 
-	public Rect2I Update(Vector2I screeSize)
+	public Rect2 Update(Vector2I screenSize)
 	{
 		foreach (var text in texts_)
 		{
@@ -60,7 +60,7 @@ public sealed class VisObjManuBar
 		}
 
 		var y = Mathf.RoundToInt(texts_.Select(text => text.Obj.GetSize().Y).Prepend(0.0f).Max());
-		var size = new Vector2I(screeSize.X, y);
+		var size = new Vector2I(screenSize.X, y);
 
 		view_.SetSize(size);
 		
@@ -91,7 +91,7 @@ public sealed class VisObjManuBar
 		}
 		
 		view_.UpdateRetained();
-		return new Rect2I(Vector2I.Zero, size);
+		return new Rect2(Vector2I.Zero, size);
 	}
 
 	public Rid GetTexture()

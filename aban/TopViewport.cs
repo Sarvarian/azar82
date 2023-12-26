@@ -1,4 +1,5 @@
 using azar82.aban.extensions;
+using azar82.aban.resources;
 using azar82.aban.vo;
 using Godot;
 
@@ -19,42 +20,40 @@ public class TopViewport
 		iterator.OnStart += Start;
 		iterator.OnProcess += Process;
 		iterator.OnEnd += End;
+		canvas_ = new RCanvas();
+		item_ = canvas_.CreateItem();
+		canvas_.AttachToViewport(topViewport_.GetViewportRid());
 	}
 
 	private void Start()
 	{
 		topViewport_.SizeChanged += OnTopViewportSizeChanged;
 		// surface01_.Start();
-		var rs = RenderingServer.Singleton;
-		c_ = rs.CanvasCreate();
-		rs.ViewportAttachCanvas(topViewport_.GetViewportRid(), c_);
-		ci_ = rs.CanvasItemCreate();
-		rs.CanvasItemSetParent(ci_, c_);
 	}
 
-	private Rid c_;
-	private Rid ci_;
+	private readonly RCanvas canvas_;
+	private readonly RCanvasItem item_;
 
 	private void End()
 	{
 		// surface01_.End();
 		menuBar_.End();
-		var rs = RenderingServer.Singleton;
-		rs.FreeRid(ci_);
-		rs.FreeRid(c_);
+		item_.Free();
+		canvas_.Free();
 	}
 
 	private void Process(double delta)
 	{
 		// surface01_.Process(delta);
+		var newSize = topViewport_.GetVisibleRect().Size.ToInt();
+		var rect = menuBar_.Update(newSize);
+		var texture = menuBar_.GetTexture();
+		item_.BlitTexture(texture, rect);
+		item_.SetSize(rect);
+		
 		if (doUpdateSize_)
 		{
-			var newSize = topViewport_.GetVisibleRect().Size.ToInt();
 			// surface01_.SetNewSize(newSize);
-			var rect = menuBar_.Update(newSize);
-			var texture = menuBar_.GetTexture();
-			var rs = RenderingServer.Singleton;
-			rs.CanvasItemAddTextureRect(ci_, rect, texture);
 			doUpdateSize_ = false;
 		}
 	}
