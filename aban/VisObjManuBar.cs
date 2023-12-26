@@ -7,12 +7,11 @@ namespace azar82.aban;
 
 public sealed class VisObjManuBar
 {
-	private readonly Font font_ = ThemeDB.FallbackFont;
-	private readonly List<RCanvasItem> texts_ = [];
+	private readonly List<RString> texts_ = [];
 	private readonly RViewport view_;
 	private readonly RCanvas canvas_;
 
-	private float y_ = 0;
+	private Vector2 size_ = Vector2.Zero;
 	
 	public VisObjManuBar(EditorMenuBarSystem menuSystem)
 	{
@@ -21,17 +20,21 @@ public sealed class VisObjManuBar
 		view_.SetRetained();
 		canvas_ = view_.CreateCanvas();
 		
-		var x = 0.0f;
-		var ascent = font_.GetAscent();
+		size_.X = 0.0f;
 		foreach (var str in menuSystem.Menus)
 		{
-			var ci = canvas_.CreateItem();
-			texts_.Add(ci);
-			font_.DrawString(ci.Rid, new Vector2(x, ascent), str);
-			var size = font_.GetStringSize(str);
-			x += size.X + 10.0f;
-			y_ = y_ < size.Y ? size.Y : y_;
+			var text = new RString(str);
+			texts_.Add(text);
+			canvas_.AttachItem(text.Item);
+			
+			var trans = Transform2D.Identity;
+			trans.Origin.X = size_.X;
+			text.Item.SetTransform(trans);
+			
+			size_.X += text.Size.X + 10.0f;
+			size_.Y = size_.Y < text.Size.Y ? text.Size.Y : size_.Y;
 		}
+		view_.SetSize(size_.ToInt());
 	}
 
 	public void End()
@@ -46,43 +49,10 @@ public sealed class VisObjManuBar
 
 	public Rect2 Update(Vector2 screenSize)
 	{
-		// foreach (var text in texts_)
-		// {
-		// 	text.Obj.Update();
-		// }
-		//
-		// var y = Mathf.RoundToInt(texts_.Select(text => text.Obj.GetSize().Y).Prepend(0.0f).Max());
-		
-		var size = new Vector2(screenSize.X, y_);
-		view_.SetSize(size.ToInt());
-		
-		/*
-		 * - [X] Update Text Nodes.
-		 * - [X] Get Text Textures.
-		 * - [X] Blit Text Textures Unto Menu Bar Viewport.
-		 */
-		
-		// foreach (var textItem in texts_)
-		// {
-		// 	var obj = textItem.Obj;
-		// 	var item = textItem.Item;
-		// 	var texture = obj.GetTexture();
-		// 	var textureSize = texture.GetSize();
-		// 	var textureRect = new Rect2(Vector2.Zero, textureSize);
-		// 	item.SetSize(textureRect);
-		// 	var textureRid = texture.GetRid();
-		// 	item.BlitTexture(textureRid, textureRect);
-		// }
-
-		/*
-		 * - [X] Make Canvas.
-		 * - [X] Make Canvas Item for each texture.
-		 * - [X] Set size of each Canvas Item.
-		 * - [X] Map each texture to its respective Canvas Item.
-		 */
-		
+		// size_ = new Vector2(screenSize.X, size_.Y);
+		// view_.SetSize(size_.ToInt());
 		view_.UpdateRetained();
-		return new Rect2(Vector2I.Zero, size);
+		return new Rect2(Vector2I.Zero, size_);
 	}
 
 	public Rid GetTexture()

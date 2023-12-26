@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Vector2 = System.Numerics.Vector2;
 
 namespace azar82.aban.r;
 
@@ -27,7 +28,12 @@ public readonly struct RCanvasItem() : IDisposable
 	{
 		Server.CanvasItemSetParent(Rid, canvas);
 	}
-
+	
+	public readonly void SetTransform(Transform2D transform)
+	{
+		Server.CanvasItemSetTransform(Rid, transform);
+	}
+	
 	public readonly void SetSize(Rect2 rect)
 	{
 		Server.CanvasItemSetCustomRect(Rid, true, rect);
